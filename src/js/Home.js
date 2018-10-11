@@ -4,7 +4,6 @@ export class Home {
     this._location = location;
     this._devices = new Map();
     this._counterId = 0;
-    // this._devices = [];
   }
   get name() {
     return this._name;
