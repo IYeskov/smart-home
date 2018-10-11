@@ -1,15 +1,25 @@
 export class Devices {
-  constructor(name, status) {
+  constructor(name) {
     this._name = name;
-    this._status = status;
+    this._isOn = false;
   }
   get name() {
     return this._name;
   }
-  get status() {
-    return this._status;
+  get isTurnedOn() {
+    return this._isOn;
   }
-  set status(status) {
-    this._status = status;
+  set turnOn(status) {
+    this._isOn = status;
+  }
+
+  get id() {
+    return this._id;
+  }
+  get lastId() {
+    return this._lastId;
+  }
+  set lastId(lastId) {
+    this._lastId = lastId;
   }
 }

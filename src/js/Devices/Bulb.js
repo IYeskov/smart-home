@@ -1,23 +1,31 @@
 import { Devices } from "../Devices";
 
 export class Bulb extends Devices {
-  constructor(name, status, brightness = 6, maxBrightness = 10) {
-    super(name, status);
-    this._brightness = brightness;
-    this._maxBrightness = maxBrightness;
-
-    if (!status) this._brightness = 0;
+  constructor(name) {
+    super(name);
+    this._brightness = 5;
+    this._maxBrightness = 15;
+    this._minBrightness = 1;
+    this._id = 1;
   }
   get brightness() {
     return this._brightness;
   }
-  plusBrightness() {
-    this._brightness += 1;
-    if (this._brightness > this._maxBrightness)
-      this._brightness = this._maxBrightness;
+  set brightness(brightness) {
+    brightness >= this._maxBrightness
+      ? (this._brightness = this._maxBrightness)
+      : brightness <= this._minBrightness
+        ? (this._brightness = this._minBrightness)
+        : (this._brightness = brightness);
   }
-  minusBrightness() {
-    this._brightness -= 1;
-    if (this._brightness < 1) this._brightness = 1;
+  increaseBrightness() {
+    this._brightness >= this._maxBrightness
+      ? (this._brightness = this._maxBrightness)
+      : this._brightness++;
+  }
+  decreaseBrightness() {
+    this._brightness <= this._minBrightness
+      ? (this._brightness = this._brightness)
+      : this._brightness--;
   }
 }

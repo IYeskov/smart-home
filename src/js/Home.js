@@ -2,7 +2,9 @@ export class Home {
   constructor(name, location) {
     this._name = name;
     this._location = location;
-    this._devices = [];
+    this._devices = new Map();
+    this._counterId = 0;
+    // this._devices = [];
   }
   get name() {
     return this._name;
@@ -14,19 +16,7 @@ export class Home {
     return this._devices;
   }
   addDevice(device) {
-    this._devices.push(device);
-  }
-  removeDevice(device) {
-    let index = this._devices.indexOf(device);
-    this._devices.splice(index, 1);
-  }
-  getDeviceByName(name) {
-    let res;
-    this._devices.forEach(device => {
-      if (device.name === name) {
-        res = device;
-      }
-    });
-    return res;
+    this._devices.set(this._counterId + 1, device);
+    this._counterId++;
   }
 }

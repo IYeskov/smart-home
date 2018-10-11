@@ -1,65 +1,68 @@
 import { Devices } from "../Devices";
 
 export class Conditioner extends Devices {
-  constructor(
-    name,
-    status,
-    temperature = 18,
-    mode = "cold",
-    speed = 5,
-    minTemp = 16,
-    maxTemp = 30,
-    maxSpeed = 5
-  ) {
-    super(name, status);
-    this._temperature = temperature;
-    this._mode = mode;
-    this._speed = speed;
-    this._minTemp = minTemp;
-    this._maxTemp = maxTemp;
-    this._maxSpeed = maxSpeed;
-
-    if (!status) {
-      this._mode = "sleep";
-      this._speed = 0;
-    }
+  constructor(name) {
+    super(name);
+    this._temperature = 21;
+    this._modeList = ["cool", "heat", "dry", "fan"];
+    this._mode = this._modeList[0];
+    this._speed = 3;
+    this._minTemperature = 16;
+    this._maxTemperature = 30;
+    this._maxSpeed = 5;
+    this._minSpeed = 1;
   }
   get temperature() {
     return this._temperature;
   }
+  set temperature(temperature) {
+    this._temperature >= this._maxTemperature
+      ? (this._temperature = this._maxTemperature)
+      : this._temperature <= this._minTemperature
+        ? (this._temperature = this._minTemperature)
+        : (this._temperature = temperature);
+  }
   get speed() {
     return this._speed;
+  }
+  set speed(speed) {
+    this._speed >= this._maxSpeed
+      ? (this._speed = this._maxSpeed)
+      : this._speed <= this._minSpeed
+        ? (this._speed = this._minSpeed)
+        : (this._speed = speed);
   }
   get mode() {
     return this._mode;
   }
-  set temperature(temperature) {
-    this._temperature = temperature;
-    if (this._temperature < this._minTemp) this._temperature = this._minTemp;
-    if (this._temperature > this._maxTemp) this._temperature = this._maxTemp;
-  }
-  set speed(speed) {
-    this._speed = speed;
-    if (this._speed > this._maxSpeed) this._speed = this._maxSpeed;
-    if (this._speed < 1) this._speed = 1;
+  get modeList() {
+    return this._modeList;
   }
   set mode(mode) {
-    this._mode = mode;
+    for (let i = 0; i < this._modeList.length; i++) {
+      mode !== this._modeList[i]
+        ? (this._mode = this._mode)
+        : (this._mode = mode);
+    }
   }
-  temperatureUp() {
-    this._temperature += 1;
-    if (this._temperature > this._maxTemp) this._temperature = this._maxTemp;
+  increaseSpeed() {
+    this._speed >= this._maxSpeed
+      ? (this._speed = this._maxSpeed)
+      : this._speed++;
   }
-  temperatureDown() {
-    this._temperature -= 1;
-    if (this._temperature < this._minTemp) this._temperature = this._minTemp;
+  decreaseSpeed() {
+    this._speed <= this._minSpeed
+      ? (this._speed = this._minSpeed)
+      : this._speed--;
   }
-  speedUp() {
-    this._speed += 1;
-    if (this._speed > this._maxSpeed) this._speed = this._maxSpeed;
+  increaseTemperature() {
+    this._temperature >= this._maxTemperature
+      ? (this._temperature = this._maxTemperature)
+      : this._temperature++;
   }
-  speedDown() {
-    this._speed -= 1;
-    if (this._speed < 1) this._speed = 1;
+  decreaseTemperature() {
+    this._temperature <= this._minTemperature
+      ? (this._temperature = this._minTemperature)
+      : this._temperature--;
   }
 }
