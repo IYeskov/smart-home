@@ -1,4 +1,4 @@
-import { Devices } from "../Devices";
+import { Devices } from "./Devices";
 
 export class Tv extends Devices {
   constructor(name) {
@@ -9,12 +9,10 @@ export class Tv extends Devices {
     this._minChannel = 1;
     this._maxVolume = 50;
     this._minVolume = 0;
+    this._id;
   }
   get maxChannel() {
     return this._maxChannel;
-  }
-  setupMaxChannelCount(num) {
-    this._maxChannel = Math.floor(Math.random() * num + 1);
   }
   get channel() {
     return this._channel;

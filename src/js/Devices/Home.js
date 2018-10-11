@@ -14,8 +14,17 @@ export class Home {
   get devices() {
     return this._devices;
   }
+  get counterId() {
+    return this._counterId;
+  }
   addDevice(device) {
     this._devices.set(this._counterId + 1, device);
     this._counterId++;
+  }
+  removeDeviceById(id) {
+    this.devices.delete(id);
+  }
+  getDeviceById(id) {
+    return this.devices.get(id);
   }
 }

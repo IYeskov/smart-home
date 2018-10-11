@@ -1,4 +1,5 @@
-import { Devices } from "../Devices";
+import { Devices } from "./Devices";
+import { runInThisContext } from "vm";
 
 export class Conditioner extends Devices {
   constructor(name) {
@@ -11,6 +12,7 @@ export class Conditioner extends Devices {
     this._maxTemperature = 30;
     this._maxSpeed = 5;
     this._minSpeed = 1;
+    this._id;
   }
   get temperature() {
     return this._temperature;
@@ -39,11 +41,9 @@ export class Conditioner extends Devices {
     return this._modeList;
   }
   set mode(mode) {
-    for (let i = 0; i < this._modeList.length; i++) {
-      mode !== this._modeList[i]
-        ? (this._mode = this._mode)
-        : (this._mode = mode);
-    }
+    this._modeList.indexOf(mode) !== -1
+      ? (this._mode = mode)
+      : (this._mode = this._mode);
   }
   increaseSpeed() {
     this._speed >= this._maxSpeed
