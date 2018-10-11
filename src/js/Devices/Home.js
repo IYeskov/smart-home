@@ -18,6 +18,12 @@ export class Home {
   get devices() {
     return this._devices;
   }
+  get activeDevices() {
+    return Array.from(this._devices.values()).filter(devices => devices.isOn);
+  }
+  get inactiveDevices() {
+    return Array.from(this._devices.values()).filter(devices => !devices.isOn);
+  }
   get counterId() {
     return this._counterId;
   }
@@ -28,18 +34,23 @@ export class Home {
   getDeviceById(id) {
     return this._devices.get(id) || null;
   }
-  removeDeviceById(id) {
-    this._devices.delete(id);
-  }
-  getDevicesByName(name) {
+  getDeviceByName(name) {
     return Array.from(this._devices.values()).filter(
       device => ~device.name.indexOf(name)
     )[0];
   }
-  getActiveDevices() {
-    return Array.from(this._devices.values()).filter(devices => devices.isOn);
+  getDevicesByName(name) {
+    return Array.from(this._devices.values()).filter(
+      device => ~device.name.indexOf(name)
+    );
   }
-  getInactiveDevices() {
-    return Array.from(this._devices.values()).filter(devices => !devices.isOn);
+  removeDeviceById(id) {
+    this._devices.delete(id);
+  }
+  removeAllDevices() {
+    this._devices.clear();
+  }
+  turnOffAllDevices() {
+    this._devices.forEach(device => device.turnOff());
   }
 }
