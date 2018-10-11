@@ -17,40 +17,48 @@ export class Tv extends Devices {
     return this._channel;
   }
   set channel(channel) {
-    channel >= this._maxChannel
-      ? (this._channel = this._maxChannel)
-      : channel <= this._minChannel
-        ? (this._channel = this._minChannel)
-        : (this._channel = channel);
+    if (channel <= this._maxChannel && channel >= this._minChannel) {
+      this._channel = channel;
+    } else {
+      throw new Error("Incorrect parameter");
+    }
   }
   get volume() {
     return this._volume;
   }
   set volume(volume) {
-    volume >= this._maxVolume
-      ? (this._volume = this._maxVolume)
-      : volume <= this._minVolume
-        ? (this._volume = this._minVolume)
-        : (this._volume = volume);
+    if (volume <= this._maxVolume && channel >= this._minVolume) {
+      this._volume = volume;
+    } else {
+      throw new Error("Incorrect parameter");
+    }
   }
   increaseVolume() {
-    this._volume >= this._maxVolume
-      ? (this._volume = this._maxVolume)
-      : this._volume++;
+    if (this._volume === this._maxVolume) {
+      this._volume = this._maxVolume;
+    } else {
+      this._volume++;
+    }
   }
   decreaseVolume() {
-    this._volume <= this._minVolume
-      ? (this._volume = this._minVolume)
-      : this._volume--;
+    if (this._volume === this._minVolume) {
+      this._volume = this._minVolume;
+    } else {
+      this._volume--;
+    }
   }
   increaseChannel() {
-    this._channel >= this._maxChannel
-      ? (this._channel = this._minChannel)
-      : this._channel++;
+    if (this._channel === this._maxChannel) {
+      this._channel = this._minChannel;
+    } else {
+      this._channel++;
+    }
   }
   decreaseChannel() {
-    this._channel <= this._minChannel
-      ? (this._channel = this._maxChannel)
-      : this._channel--;
+    if (this._channel === this._minChannel) {
+      this._channel = this._maxChannel;
+    } else {
+      this._channel--;
+    }
   }
 }

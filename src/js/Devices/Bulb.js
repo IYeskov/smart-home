@@ -11,20 +11,27 @@ export class Bulb extends Devices {
     return this._brightness;
   }
   set brightness(brightness) {
-    brightness >= this._maxBrightness
-      ? (this._brightness = this._maxBrightness)
-      : brightness <= this._minBrightness
-        ? (this._brightness = this._minBrightness)
-        : (this._brightness = brightness);
+    if (
+      brightness <= this._maxBrightness &&
+      brightness >= this._minBrightness
+    ) {
+      this._brightness = brightness;
+    } else {
+      throw new Error("Incorrect parameter");
+    }
   }
   increaseBrightness() {
-    this._brightness >= this._maxBrightness
-      ? (this._brightness = this._maxBrightness)
-      : this._brightness++;
+    if (this._brightness === this._maxBrightness) {
+      this._brightness = this._maxBrightness;
+    } else {
+      this._brightness++;
+    }
   }
   decreaseBrightness() {
-    this._brightness <= this._minBrightness
-      ? (this._brightness = this._brightness)
-      : this._brightness--;
+    if (this._brightness === this._minBrightness) {
+      this._brightness = this._minBrightness;
+    } else {
+      this._brightness--;
+    }
   }
 }

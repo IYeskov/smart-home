@@ -2,17 +2,24 @@ export class Devices {
   constructor(name) {
     this._name = name;
     this._isOn = false;
+    this._isShow = true;
   }
   get name() {
     return this._name;
   }
-  get isTurnedOn() {
+  get isOn() {
     return this._isOn;
   }
-  set turnOn(status) {
-    this._isOn = status;
+  turnOn() {
+    this._isOn = true;
   }
-  get id() {
-    return this._id;
+  turnOff() {
+    this._isOn = false;
+  }
+  show() {
+    this._isShow = true;
+  }
+  hide() {
+    this._isShow = false;
   }
 }

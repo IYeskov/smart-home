@@ -1,7 +1,8 @@
 export class Home {
-  constructor(name, location) {
+  constructor(name, location, owner) {
     this._name = name;
     this._location = location;
+    this._owner = owner;
     this._devices = new Map();
     this._counterId = 0;
   }
@@ -10,6 +11,9 @@ export class Home {
   }
   get location() {
     return this._location;
+  }
+  get owner() {
+    return this._owner;
   }
   get devices() {
     return this._devices;
@@ -21,10 +25,21 @@ export class Home {
     this._devices.set(this._counterId + 1, device);
     this._counterId++;
   }
-  removeDeviceById(id) {
-    this.devices.delete(id);
-  }
   getDeviceById(id) {
-    return this.devices.get(id);
+    return this._devices.get(id) || null;
+  }
+  removeDeviceById(id) {
+    this._devices.delete(id);
+  }
+  getDevicesByName(name) {
+    return Array.from(this._devices.values()).filter(
+      device => ~device.name.indexOf(name)
+    )[0];
+  }
+  getActiveDevices() {
+    return Array.from(this._devices.values()).filter(devices => devices.isOn);
+  }
+  getInactiveDevices() {
+    return Array.from(this._devices.values()).filter(devices => !devices.isOn);
   }
 }

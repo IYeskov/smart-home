@@ -17,21 +17,24 @@ export class Conditioner extends Devices {
     return this._temperature;
   }
   set temperature(temperature) {
-    this._temperature >= this._maxTemperature
-      ? (this._temperature = this._maxTemperature)
-      : this._temperature <= this._minTemperature
-        ? (this._temperature = this._minTemperature)
-        : (this._temperature = temperature);
+    if (
+      temperature <= this._maxTemperature &&
+      channel >= this._minTemperature
+    ) {
+      this._temperature = temperature;
+    } else {
+      throw new Error("Incorrect parameter");
+    }
   }
   get speed() {
     return this._speed;
   }
   set speed(speed) {
-    this._speed >= this._maxSpeed
-      ? (this._speed = this._maxSpeed)
-      : this._speed <= this._minSpeed
-        ? (this._speed = this._minSpeed)
-        : (this._speed = speed);
+    if (speed <= this._maxSpeed && channel >= this._minSpeed) {
+      this._speed = speed;
+    } else {
+      throw new Error("Incorrect parameter");
+    }
   }
   get mode() {
     return this._mode;
@@ -40,28 +43,38 @@ export class Conditioner extends Devices {
     return this._modeList;
   }
   set mode(mode) {
-    this._modeList.indexOf(mode) !== -1
-      ? (this._mode = mode)
-      : (this._mode = this._mode);
+    if (~this._modeList.indexOf(mode)) {
+      this._mode = mode;
+    } else {
+      throw new Error("Incorrect parameter");
+    }
   }
   increaseSpeed() {
-    this._speed >= this._maxSpeed
-      ? (this._speed = this._maxSpeed)
-      : this._speed++;
+    if (this._speed === this._maxSpeed) {
+      this._speed = this._maxSpeed;
+    } else {
+      this._speed++;
+    }
   }
   decreaseSpeed() {
-    this._speed <= this._minSpeed
-      ? (this._speed = this._minSpeed)
-      : this._speed--;
+    if (this._speed === this._minSpeed) {
+      this._speed = this._minSpeed;
+    } else {
+      this._speed--;
+    }
   }
   increaseTemperature() {
-    this._temperature >= this._maxTemperature
-      ? (this._temperature = this._maxTemperature)
-      : this._temperature++;
+    if (this._temperature === this._maxTemperature) {
+      this._temperature = this._maxTemperature;
+    } else {
+      this._temperature++;
+    }
   }
   decreaseTemperature() {
-    this._temperature <= this._minTemperature
-      ? (this._temperature = this._minTemperature)
-      : this._temperature--;
+    if (this._temperature === this._minTemperature) {
+      this._temperature = this._minTemperature;
+    } else {
+      this._temperature--;
+    }
   }
 }
