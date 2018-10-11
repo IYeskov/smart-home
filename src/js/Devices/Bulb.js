@@ -6,7 +6,6 @@ export class Bulb extends Devices {
     this._brightness = 5;
     this._maxBrightness = 15;
     this._minBrightness = 1;
-    this._id;
   }
   get brightness() {
     return this._brightness;

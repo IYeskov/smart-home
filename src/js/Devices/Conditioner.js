@@ -12,7 +12,6 @@ export class Conditioner extends Devices {
     this._maxTemperature = 30;
     this._maxSpeed = 5;
     this._minSpeed = 1;
-    this._id;
   }
   get temperature() {
     return this._temperature;

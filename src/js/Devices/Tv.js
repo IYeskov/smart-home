@@ -9,7 +9,6 @@ export class Tv extends Devices {
     this._minChannel = 1;
     this._maxVolume = 50;
     this._minVolume = 0;
-    this._id;
   }
   get maxChannel() {
     return this._maxChannel;
