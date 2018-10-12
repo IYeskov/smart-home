@@ -35,9 +35,11 @@ export class Home {
     return this._devices.get(id) || null;
   }
   getDeviceByName(name) {
-    return Array.from(this._devices.values()).filter(
-      device => ~device.name.indexOf(name)
-    )[0];
+    return (
+      Array.from(this._devices.values()).filter(
+        device => ~device.name.indexOf(name)
+      )[0] || null
+    );
   }
   removeDeviceById(id) {
     this._devices.delete(id);
