@@ -19,7 +19,7 @@ export class Conditioner extends Devices {
   set temperature(temperature) {
     if (
       temperature <= this._maxTemperature &&
-      channel >= this._minTemperature
+      temperature >= this._minTemperature
     ) {
       this._temperature = temperature;
     } else {
@@ -30,7 +30,7 @@ export class Conditioner extends Devices {
     return this._speed;
   }
   set speed(speed) {
-    if (speed <= this._maxSpeed && channel >= this._minSpeed) {
+    if (speed <= this._maxSpeed && speed >= this._minSpeed) {
       this._speed = speed;
     } else {
       throw new Error("Incorrect parameter");
