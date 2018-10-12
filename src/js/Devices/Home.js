@@ -39,11 +39,6 @@ export class Home {
       device => ~device.name.indexOf(name)
     )[0];
   }
-  getDevicesByName(name) {
-    return Array.from(this._devices.values()).filter(
-      device => ~device.name.indexOf(name)
-    );
-  }
   removeDeviceById(id) {
     this._devices.delete(id);
   }
