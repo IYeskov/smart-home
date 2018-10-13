@@ -28,7 +28,8 @@ export class Home {
     return this._counterId;
   }
   addDevice(device) {
-    this._devices.set(this._counterId + 1, device);
+    this._devices.set(this._counterId + 1, device); // Исправить!
+    device.id = this._counterId + 1;
     this._counterId++;
   }
   getDeviceById(id) {

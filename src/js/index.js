@@ -11,6 +11,7 @@ window.home = home;
 
 home.addDevice(new Bulb("Bulb 1"));
 home.addDevice(new Bulb("Bulb 2"));
+home.addDevice(new Bulb("Bulb 3"));
 home.getDeviceById(1).brightness = 9;
 console.log(home.getDevicesByName("Bulb 1"));
 console.log(home.getDeviceById(1));
