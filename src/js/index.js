@@ -13,9 +13,10 @@ home.addDevice(new Bulb("Bulb 1"));
 home.addDevice(new Bulb("Bulb 2"));
 home.addDevice(new Bulb("Bulb 3"));
 home.getDeviceById(1).brightness = 9;
-console.log(home.getDevicesByName("Bulb 1"));
-console.log(home.getDeviceById(1));
 
-home.addDevice(new Tv("In the kitchen"));
-home.addDevice(new Conditioner("In the kitchen"));
+home.addDevice(new Tv("First TV"));
+home.addDevice(new Conditioner("Air"));
 home.addDevice(new Tv("One more Tv"));
+
+console.log(home.getDeviceByName("Bulb 1"));
+console.log(home.getDeviceById(3));
