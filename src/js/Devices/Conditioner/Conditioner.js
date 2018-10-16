@@ -1,12 +1,11 @@
-import { Devices } from "./Devices";
-import { runInThisContext } from "vm";
+import { Devices } from "../Devices";
 
 export class Conditioner extends Devices {
   constructor(name) {
     super(name);
     this._temperature = 21;
     this._modeList = ["cool", "heat", "dry", "fan"];
-    this._mode = this._modeList[0];
+    this._mode = 1;
     this._speed = 3;
     this._minTemperature = 16;
     this._maxTemperature = 30;
@@ -37,7 +36,7 @@ export class Conditioner extends Devices {
     }
   }
   get mode() {
-    return this._mode;
+    return this._modeList[this._mode - 1];
   }
   get modeList() {
     return this._modeList;
@@ -48,6 +47,12 @@ export class Conditioner extends Devices {
     } else {
       throw new Error("Incorrect parameter");
     }
+  }
+  changeMode() {
+    if (this._mode === this._modeList.length) {
+      this._mode = 0;
+    }
+    this._mode++;
   }
   increaseSpeed() {
     if (this._speed === this._maxSpeed) {

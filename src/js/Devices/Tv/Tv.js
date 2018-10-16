@@ -1,4 +1,4 @@
-import { Devices } from "./Devices";
+import { Devices } from "../Devices";
 
 export class Tv extends Devices {
   constructor(name) {
