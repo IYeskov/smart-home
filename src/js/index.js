@@ -12,6 +12,7 @@ window.home = home;
 home.addDevice(new Bulb("Bulb 1"));
 home.addDevice(new Bulb("Bulb 2"));
 home.addDevice(new Bulb("Bulb 3"));
+home.addDevice(new Bulb("Bulbewrwerwer 3"));
 home.getDeviceById(1).brightness = 9;
 
 home.addDevice(new Tv("First TV"));
