@@ -1,3 +1,95 @@
 @import "variables";
 
 @import "../fonts/fonts";
+
+#root {
+  display: flex;
+  max-width: 1440px;
+}
+.sidebar {
+  flex-basis: 15%;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+}
+.header {
+  flex-basis: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.main {
+  flex-basis: 85%;
+  border: 1px solid green;
+  display: flex;
+  flex-wrap: wrap;
+}
+.container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.device {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 200px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid red;
+  padding: 20px 10px;
+}
+
+.tv {
+  &__name {
+    flex-basis: 100%;
+  }
+  &__channel {
+    flex-basis: 100%;
+  }
+  &__volume {
+    flex-basis: 100%;
+    margin-bottom: 50px;
+  }
+}
+.btn {
+  margin-top: 5px;
+  &__tv {
+    width: 50%;
+  }
+}
+.conditioner {
+  &__name {
+    flex-basis: 100%;
+  }
+  &__mode {
+    flex-basis: 100%;
+  }
+  &__speed {
+    flex-basis: 100%;
+    margin-bottom: 50px;
+  }
+}
+.btn {
+  margin-top: 5px;
+  &__conditioner {
+    width: 50%;
+    &_mode {
+      width: 100%;
+    }
+  }
+}
+.bulb {
+  &__name {
+    flex-basis: 100%;
+  }
+  &__brightness {
+    flex-basis: 100%;
+  }
+}
+.btn {
+  margin-top: 5px;
+  &__bulb {
+    width: 50%;
+  }
+}
