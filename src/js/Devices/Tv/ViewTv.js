@@ -5,9 +5,8 @@ export class ViewTv {
     this._state = document.createElement("div");
   }
   stateChange() {
-    this._state.innerText = `Состояние: ${
-      this._device.isOn ? "вкл." : "выкл."
-    }`;
+    this._state.className = "state";
+    this._state.innerText = `State: ${this._device.isOn ? "вкл." : "выкл."}`;
   }
   render() {
     let tv = document.createElement("div");

@@ -44,7 +44,6 @@ export class Home {
   }
   removeDeviceById(id) {
     this._devices.delete(id);
-    this._counterId--;
   }
   removeAllDevices() {
     this._devices.clear();
