@@ -2,7 +2,6 @@ export class Devices {
   constructor(name) {
     this._name = name;
     this._isOn = false;
-    this._isShow = true;
     this._id = null;
   }
   get id() {

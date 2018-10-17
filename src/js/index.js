@@ -14,3 +14,4 @@ const viewHome = new ViewHome(home, document.getElementById("root"));
 viewHome.render();
 
 window.home = home;
+window.viewHome = viewHome;

@@ -3,6 +3,7 @@ export class ViewTv {
     this._device = device;
     this._rootElement = rootElement;
     this._state = document.createElement("div");
+    this._isShow = true;
   }
   stateChange() {
     this._state.className = "state";
