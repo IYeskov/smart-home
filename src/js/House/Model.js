@@ -1,4 +1,4 @@
-export class Home {
+export class House {
   constructor(name, location, owner) {
     this._name = name;
     this._location = location;
@@ -18,6 +18,9 @@ export class Home {
   get devices() {
     return this._devices;
   }
+  get devicesArray() {
+    return Array.from(this._devices.values());
+  }
   get activeDevices() {
     return Array.from(this._devices.values()).filter(devices => devices.isOn);
   }
@@ -30,20 +33,13 @@ export class Home {
   addDevice(device) {
     this._counterId++;
     device.id = this._counterId;
-    this._devices.set(device.id, device);
-  }
-  getDeviceById(id) {
-    return this._devices.get(id) || null;
+    this._devices.set(device.name, device);
   }
   getDeviceByName(name) {
-    return (
-      Array.from(this._devices.values()).filter(
-        device => ~device.name.indexOf(name)
-      )[0] || null
-    );
+    return this._devices.get(name) || null;
   }
-  removeDeviceById(id) {
-    this._devices.delete(id);
+  removeDeviceByName(name) {
+    this._devices.delete(name);
   }
   removeAllDevices() {
     this._devices.clear();
