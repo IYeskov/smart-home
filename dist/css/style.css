@@ -18,9 +18,220 @@
   flex-direction: column;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  background-color: #66afc2;
+  min-height: 100vh;
+}
+
+.main {
+  -ms-flex-preferred-size: 85%;
+  flex-basis: 85%;
+}
+
+.houseInfo {
+  margin: 25px auto 40px;
+  text-align: center;
+}
+.houseInfo__btn {
+  margin-top: 10px;
+}
+
+.btn {
+  -ms-flex-item-align: center;
+  align-self: center;
+  font-family: arial, sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  color: #444444;
+  text-decoration: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding: 10px 12px;
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  background: whitesmoke -webkit-gradient(linear, left top, left bottom, from(#f4f4f4), to(#f1f1f1));
+  background: whitesmoke -webkit-linear-gradient(#f4f4f4, #f1f1f1);
+  background: whitesmoke -o-linear-gradient(#f4f4f4, #f1f1f1);
+  background: whitesmoke linear-gradient(#f4f4f4, #f1f1f1);
+  -webkit-transition: all 0.218s ease 0s;
+  -o-transition: all 0.218s ease 0s;
+  transition: all 0.218s ease 0s;
+}
+.btn:hover {
+  color: #181818;
+  border: 1px solid #c6c6c6;
+  background: #f7f7f7 -webkit-gradient(linear, left top, left bottom, from(#f7f7f7), to(#f1f1f1));
+  background: #f7f7f7 -webkit-linear-gradient(#f7f7f7, #f1f1f1);
+  background: #f7f7f7 -o-linear-gradient(#f7f7f7, #f1f1f1);
+  background: #f7f7f7 linear-gradient(#f7f7f7, #f1f1f1);
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+.btn:active {
+  color: #333333;
+  border: 1px solid #cccccc;
+  background: #eeeeee -webkit-gradient(linear, left top, left bottom, from(#eeeeee), to(#e0e0e0));
+  background: #eeeeee -webkit-linear-gradient(#eeeeee, #e0e0e0);
+  background: #eeeeee -o-linear-gradient(#eeeeee, #e0e0e0);
+  background: #eeeeee linear-gradient(#eeeeee, #e0e0e0);
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
+}
+.btn:disabled {
+  color: #797979;
+  background: whitesmoke -webkit-gradient(linear, left top, left bottom, from(#d8d8d8), to(#d1d1d1));
+  background: whitesmoke -webkit-linear-gradient(#d8d8d8, #d1d1d1);
+  background: whitesmoke -o-linear-gradient(#d8d8d8, #d1d1d1);
+  background: whitesmoke linear-gradient(#d8d8d8, #d1d1d1);
 }
 
 .deviceContainer {
   border: 1px solid black;
-  padding: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  width: 250px;
+  text-align: center;
+  padding: 25px;
+  margin: 10px;
+}
+.deviceContainer__type,
+.deviceContainer__name,
+.deviceContainer__state,
+.deviceContainer__brightness,
+.deviceContainer__volume,
+.deviceContainer__channel,
+.deviceContainer__temperature,
+.deviceContainer__mode,
+.deviceContainer__speed {
+  -ms-flex-preferred-size: 100%;
+  flex-basis: 100%;
+}
+.deviceContainer__btn {
+  -ms-flex-preferred-size: 50%;
+  flex-basis: 50%;
+}
+.deviceContainer__btn_remove {
+  color: red;
+}
+.deviceContainer__btn_mode {
+  margin: 0 35%;
+}
+
+.addDevice {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 100%;
+}
+.addDevice__heading {
+  -ms-flex-preferred-size: 100%;
+  flex-basis: 100%;
+}
+.addDevice__deviceHeading {
+  text-align: center;
+}
+.addDevice__deviceButton {
+  width: 256px;
+  height: 256px;
+  outline: none;
+  border: none;
+}
+.addDevice__deviceButton_tv {
+  background: url(../img/TV.png) 100% / cover no-repeat;
+}
+.addDevice__deviceButton_bulb {
+  background: url(../img/bulb.png) 100% / cover no-repeat;
+}
+.addDevice__deviceButton_conditioner {
+  background: url(../img/cond.png) 100% / cover no-repeat;
+}
+
+.modal {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(51, 51, 51, 0.308);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.modal__heading {
+  text-align: center;
+}
+.modal__container {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  padding: 60px 30px;
+  border: 1px solid black;
+  border-radius: 4px;
+  background-color: #fefefe;
+}
+.modal__input {
+  margin-bottom: 10px;
+}
+.modal__cancelButton {
+  width: 20px;
+  height: 4px;
+  background-color: #000;
+  border-radius: 4px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  -webkit-transform: rotate(135deg);
+  -ms-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+.modal__cancelButton::before {
+  display: block;
+  content: "";
+  width: 20px;
+  height: 4px;
+  border-radius: 4px;
+  background-color: #000;
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+.addDeviceContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+}
+
+.devices {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
 }
